@@ -1,0 +1,35 @@
+{
+  "name": "@kirz/expo-env",
+  "version": "1.2.2",
+  "description": "Simple Expo env loader with TypeScript and schema validation",
+  "author": "Kirill Zaidulin <zaidulinkirill@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zaikir/expo-env"
+  },
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "bin": {
+    "load-env": "./bin/load-env.sh"
+  },
+  "keywords": [
+    "Expo",
+    "Env",
+    "Environment",
+    "Dotenv",
+    "Zod",
+    "React Native"
+  ],
+  "dependencies": {
+    "yaml": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.4.2",
+    "typescript": "^5.0.0",
+    "zod": "^3.23.8"
+  },
+  "peerDependencies": {
+    "zod": "^3.0.0"
+  }
+}
