@@ -50,7 +50,7 @@ const Schema = z.object({
   NODE_ENV: z.enum(["development", "production"]).default("development"),
 });
 
-export type Env = z.infer<typeof Schema>;
+export const Env = {} as z.infer<typeof Schema>;
 `.trim() + "\n";
 
 const jsFileContent =
