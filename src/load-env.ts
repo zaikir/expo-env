@@ -1,4 +1,5 @@
 import * as z from "zod";
+// @ts-ignore
 import Schema from "./env.js";
 import * as fs from "node:fs/promises";
 import * as yaml from "yaml";
