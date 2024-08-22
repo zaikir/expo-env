@@ -15,6 +15,7 @@ yarn add @kirz/expo-env
 pnpm add @kirz/expo-env
 ```
 
+
 ### Schema validation
 This package requires [Zod](https://www.npmjs.com/package/zod) as a peer dependency for schema validation. You can install it as follows:
 ```bash
@@ -34,6 +35,8 @@ Add the following script to your package.json to automatically load environment 
 }
 ```
 
+To significantly enhance script execution speed, we’ve adopted the modern Bun JavaScript runtime. This change has led to a roughly 50% reduction in the time required to run scripts. To take advantage of this performance boost, please install [Bun.sh](https://bun.sh/).
+
 #### Step 2: Create env.ts
 In the root of your project, create a file named env.ts. This file will define your environment variables using Zod for schema validation. Here’s an example:
 ```typescript
@@ -45,7 +48,6 @@ export default {
   APP_VERSION: z.string().default("1.0"),
 };
 ```
-
 
 #### Step 3: Load Env
 This package loads environment variables from two sources:
