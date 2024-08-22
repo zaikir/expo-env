@@ -53,6 +53,7 @@ const Schema = z.object({
 });
 
 export const Env = {} as z.infer<typeof Schema>;
+export { EasConfig } from './types/eas-config.js'
 `.trim() + "\n";
 
 const jsFileContent =
