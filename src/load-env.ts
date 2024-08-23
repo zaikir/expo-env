@@ -2,8 +2,8 @@ import * as z from "zod";
 // @ts-ignore
 import Schema from "../../../../env.js";
 import * as fs from "node:fs/promises";
-import * as yaml from "yaml";
 import * as path from 'path';
+import 'dotenv/config'
 
 export async function loadEnv() {
   const reset = "\x1b[0m";
@@ -15,13 +15,6 @@ export async function loadEnv() {
     ...process.env,
     NODE_ENV,
   };
-  
-  const envFile = `env.${processEnv.NODE_ENV === "production" ? "prod" : "dev"}.yml`;
-  try {
-    // @ts-ignore
-    const data = yaml.parse(await fs.readFile(envFile, "utf8"));
-    processEnv = { ...processEnv, ...data };
-  } catch {}
   
   const parsed = z
     .object({
