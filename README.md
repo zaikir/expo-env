@@ -49,20 +49,13 @@ export default {
 };
 ```
 
-#### Step 3: Load Env
-This package loads environment variables from two sources:
-- Process Environment (process.env)
-- YAML Configuration File: the package looks for a YAML configuration file named either env.dev.yml or env.prod.yml depending on the value of the NODE_ENV environment variable.
-  -	If `NODE_ENV` is set to `development`, it will load variables from `env.dev.yml`
-  - If `NODE_ENV` is set to `production`, it will load variables from `env.prod.yml`
-
-#### Step 4: Import Env
+#### Step 3: Import Env
 In any file where you need to access your environment variables, import the Env object like this:
 ```typescript
 import { Env } from "@kirz/expo-env";
 ```
 
-#### Step 5: Use Env in Your Project
+#### Step 4: Use Env in Your Project
 You can now access your validated environment variables anywhere in your project, including in app.config.ts. For example:
 ```typescript
 import { Env } from "@kirz/expo-env";

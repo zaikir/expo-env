@@ -9,5 +9,3 @@ const { parseTypes } = await loadEnv()
 if (parseTypes) {
   compileTypes(`node_modules/@kirz/expo-env/tsconfig.json`)
 }
-
-await loadEas()

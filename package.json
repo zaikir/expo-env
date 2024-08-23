@@ -1,6 +1,6 @@
 {
   "name": "@kirz/expo-env",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Simple Expo env loader with TypeScript and schema validation",
   "author": "Kirill Zaidulin <zaidulinkirill@gmail.com>",
   "license": "MIT",
@@ -11,7 +11,7 @@
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "bin": {
-    "load-env": "./bin/load-env.ts"
+    "load-env": "./bin/load-env.sh"
   },
   "keywords": [
     "Expo",
