@@ -45,6 +45,7 @@ export async function loadEnv() {
 /* Generated automatically. Please do not modify this file. */
 /************************************************************/
 import z from "zod";
+// @ts-ignore
 import EnvSchema from "../../../../env.js";
 
 const Schema = z.object({
