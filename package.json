@@ -1,6 +1,6 @@
 {
   "name": "@kirz/expo-env",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Simple Expo env loader with TypeScript and schema validation",
   "author": "Kirill Zaidulin <zaidulinkirill@gmail.com>",
   "license": "MIT",
