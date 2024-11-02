@@ -5,10 +5,13 @@ import * as fs from "node:fs/promises";
 import * as path from 'path';
 import 'dotenv/config'
 
+const ignoreError = process.argv.includes('--ignore-error');
+
 export async function loadEnv() {
   const reset = "\x1b[0m";
   const red = "\x1b[31m";
   
+
   const NODE_ENV = !process.env.NODE_ENV ? "development" : process.env.NODE_ENV;
   
   let processEnv = {
@@ -29,7 +32,9 @@ export async function loadEnv() {
       parsed.error.flatten().fieldErrors,
     );
 
-    process.exit(1);
+    if (!ignoreError) {
+      process.exit(1);
+    }
   }
   
   const tsFileContent =
@@ -50,24 +55,25 @@ export const Env = {} as z.infer<typeof Schema>;
 export { EasConfig } from './types/eas-config.js'
 `.trim() + "\n";
 
-const jsFileContent =
-  `
+
+  const scriptFolder = __dirname;
+  
+  async function updateEnvFile() {
+
+    const jsFileContent =
+`
 /************************************************************/
 /* Generated automatically. Please do not modify this file. */
 /************************************************************/
 
 module.exports = {
-  Env: {
-${Object.entries(parsed.data)
-  .map(([key, value]) => `    ${key}: ${JSON.stringify(value)},`)
-  .join("\n")}
-  }
+Env: {
+${Object.entries(parsed.data!)
+.map(([key, value]) => `    ${key}: ${JSON.stringify(value)},`)
+.join("\n")}
+}
 }`.trim() + "\n";
-  
-  
-  const scriptFolder = __dirname;
-  
-  async function updateEnvFile() {
+
     await fs.writeFile(path.join(scriptFolder, "index.js"), jsFileContent)
   }
   
@@ -94,7 +100,7 @@ ${Object.entries(parsed.data)
   
   // @ts-ignore
   await Promise.all([
-    updateEnvFile(),
+    ...parsed.success ? [updateEnvFile()]:[],
     updateTsFile()
   ]);
   
