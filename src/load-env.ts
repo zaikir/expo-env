@@ -12,7 +12,7 @@ export async function loadEnv() {
   const red = "\x1b[31m";
   
 
-  const NODE_ENV = !process.env.NODE_ENV ? "development" : process.env.NODE_ENV;
+  const NODE_ENV = !process.env.NODE_ENV ? "production" : process.env.NODE_ENV;
   
   let processEnv = {
     ...process.env,
@@ -22,7 +22,7 @@ export async function loadEnv() {
   const parsed = z
     .object({
       ...Schema,
-      NODE_ENV: z.enum(["development", "production"]).default("development"),
+      NODE_ENV: z.enum(["development", "production"]).default("production"),
     })
     .safeParse(processEnv);
   
@@ -48,7 +48,7 @@ import EnvSchema from "../../../../env.js";
 
 const Schema = z.object({
   ...EnvSchema,
-  NODE_ENV: z.enum(["development", "production"]).default("development"),
+  NODE_ENV: z.enum(["development", "production"]).default("production"),
 });
 
 export const Env = {} as z.infer<typeof Schema>;
